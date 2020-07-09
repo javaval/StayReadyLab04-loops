@@ -5,5 +5,12 @@ import org.junit.Test;
 
 public class CarRideTest {
 
+    @Test
+    public void AreWeThereYetTest(){
+        CarRide cr = new CarRide();
+
+        String expected 
+    }
+
 
 }
