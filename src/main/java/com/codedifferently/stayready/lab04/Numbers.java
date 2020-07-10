@@ -1,5 +1,6 @@
 package com.codedifferently.stayready.lab04;
 
+import java.util.Random;
 
 public class Numbers {
 
@@ -23,11 +24,23 @@ public class Numbers {
     }
 
     public String squares(){
-        return "";
+        String output ="squareNumbers()\n"
+    				   +"*** Output ***";
+    	for(int x=1; x<=10; x++){
+    		output += "\n" + (x*x);
+    	}
+        return output;
     }
 
-    public String random4(){
-        return "";
+    public String random4() {
+        Random rn = new Random();
+        String output = "random4()\n"
+                +"*** Output ***";
+        for (int i = 1; i <= 4; i++) {
+            int nxt = rn.nextInt(10);
+            output += "\n" + nxt;
+        }
+        return output;
     }
 
     public String even(int n){

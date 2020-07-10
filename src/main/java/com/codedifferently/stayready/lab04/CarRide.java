@@ -1,38 +1,45 @@
 package com.codedifferently.stayready.lab04;
-import java.nio.channels.ScatteringByteChannel;
-import java.util.Scanner;  //Java API for User Input and Output
+
+import java.util.Scanner;  
 
 
 public class CarRide {
-    //Accpets no argument, returns a String
+
+    public String str = "Are we there yet?"; //init string 
+    Scanner sc = new Scanner(System.in); // set up of scanner object for user input
+
+    //areWeThereYet returns a string...debated if it should just return void. no arguments accepted.
     public String areWeThereYet(){
+        //prints a message out to the user
+        System.out.println(str);
+        //begin loop, this while the user input is not yes;while isYes != true. 
 
-        //New Scanner object, we're naming it "in"...this can be named anything. 
-        Scanner in = new Scanner(System.in);
-
-        //At the start of the program the user is asked "Are we there yet"
-        System.out.println("Are we there yet?");
-
-        //While is another form of loop, different from a for loop, it uses boolean 
-        // logic and repeats until the condition is false. ... See Chapter 3, page 94 in Core Java
-
-        // this line reads: while the user input is not (!) true, keep printing out "Are we there yet?"
-        while(!expectedInput(in.nextLine())){
-            System.out.println("Are we there yet?");
-        }
-        return "Thank Jesus!"; //issue, does not return after loop fails, just ends program
+        while(isYes(sc.nextLine()) != true){  
+            //it'll keep asking are we there yet 
+            System.out.println(str);
+            //it'll keep asking for user input 
+            String reAsk = sc.nextLine();
+            //it'll keep evaluating the user input as true or false.
+            isYes(reAsk);
+        } 
+        //finally returns str
+        return str;
     }
+    
+    public boolean isYes(String input){ //helper function
+        String neccesaryCon = "Yes";    //condition to return true
 
-    //returns true or false is the user input is the expected input
-    public boolean expectedInput(String userIn){
-        return userIn.equals("Yes"); //issue, what if the user says yes in lowercase
+        if(neccesaryCon.equals(input)){
+            str = "Good"; // public string is reassigned to "Good"
+            return true;
+        }
+        return false; //this second return works like an else statement...
     }
 
     public static void main(String[] args){
         CarRide carRide = new CarRide();
-        carRide.areWeThereYet();
+        //Printing out return value from areWeThereYet();
+        System.out.println(carRide.areWeThereYet());
     }
-
-
 
 }
